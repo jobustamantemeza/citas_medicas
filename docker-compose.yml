@@ -1,0 +1,16 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:///./citas_medicas.db
+      - DURACION_CITA_MINUTOS=30
+      - HORARIO_INICIO=8
+      - HORARIO_FIN=18
+    volumes:
+      - db_data:/app
+    restart: unless-stopped
+
+volumes:
+  db_data:
